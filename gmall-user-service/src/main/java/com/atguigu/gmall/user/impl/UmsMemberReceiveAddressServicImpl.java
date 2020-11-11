@@ -22,4 +22,11 @@ public class UmsMemberReceiveAddressServicImpl implements UmsMemberReceiveAddres
         List<UmsMemberReceiveAddress> umsMemberReceiveAddressList = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
         return umsMemberReceiveAddressList;
     }
+
+    @Override
+    public UmsMemberReceiveAddress getReceiveAddressByReceiveAddressId(String receiveAddressId) {
+        UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
+        umsMemberReceiveAddress.setId(receiveAddressId);
+        return umsMemberReceiveAddressMapper.selectOne(umsMemberReceiveAddress);
+    }
 }

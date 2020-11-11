@@ -2,15 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.gmall.manager.mapper.PmsProductSaleAttrValueMapper">
-
-    <resultMap id="selectSpuSaleAttrListCheckBySkuMap" type="com.atguigu.gmall.bean.PmsProductSaleAttr" autoMapping="true">
-        <result column="sa_id" property="id"></result>
-        <collection property="spuSaleAttrValueList" ofType="com.atguigu.gmall.bean.PmsProductSaleAttrValue" autoMapping="true">
-            <result column="sav_id" property="id"></result>
-        </collection>
-    </resultMap>
-
+<mapper namespace="com.atguigu.gmall.manager.mapper.PmsProductSaleAttrMapper">
 
     <select id="selectSpuSaleAttrListCheckBySku" resultMap="selectSpuSaleAttrListCheckBySkuMap">
         SELECT
@@ -22,8 +14,14 @@
                 AND sa.product_id = #{productId}
                 LEFT JOIN pms_sku_sale_attr_value ssav ON sav.id = ssav.sale_attr_value_id
                 AND ssav.sku_id = #{skuId}
-                ORDER BY sav.id
+
     </select>
 
+    <resultMap id="selectSpuSaleAttrListCheckBySkuMap" type="com.atguigu.gmall.bean.PmsProductSaleAttr" autoMapping="true">
+        <result column="sa_id" property="id"></result>
+        <collection property="spuSaleAttrValueList" ofType="com.atguigu.gmall.bean.PmsProductSaleAttrValue" autoMapping="true">
+            <result column="sav_id" property="id"></result>
+        </collection>
+    </resultMap>
 
 </mapper>
